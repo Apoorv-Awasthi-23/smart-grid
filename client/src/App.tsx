@@ -1,16 +1,17 @@
 import SmartGrid from "./smartGrid.tsx"
+import { generateUsers } from "./utils/generateSampleData";
 
-const data = [
-  { id: 1, name: "Alice", balance: 1200 },
-  { id: 2, name: "Bob", balance: 900 },
-  { id: 3, name: "Charlie", balance: 1600 },
-];
+
+const data = generateUsers(1000);
 
 const columns = [
   { id: "id", label: "ID", sortable: true },
-  { id: "name", label: "Name" },
-  { id: "balance", label: "Balance", sortable: true },
+  { id: "name", label: "Name", sortable: true },
+  { id: "email", label: "Email", sortable: true },
+  { id: "role", label: "Role", sortable: true },
+  { id: "status", label: "Status", sortable: true },
 ];
+
 const pageSize = 2;
 const theme = "dark";
 const App = () => {
@@ -19,16 +20,17 @@ const App = () => {
     console.log("Editing row:", row, "at index:", rowIndex);
   };
   return (
-    <div>
+    <>
       <SmartGrid
         data={data}
         columns={columns}
         pageSize={pageSize}
         theme={theme}
         onRowEdit={handleEdit}
-      
+        height={0}
+        width="100%"      
       />
-      </div>
+      </>
   )
 }
 

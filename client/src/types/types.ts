@@ -11,4 +11,6 @@ export type SmartGridProps<T = any> = {
   pageSize?: number;
   theme?: "light" | "dark";
   onRowEdit?: (row: T, rowIndex: number) => void;
+  height?: number;
+  width?: number|string;
 };
