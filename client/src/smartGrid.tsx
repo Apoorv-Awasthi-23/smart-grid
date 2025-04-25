@@ -201,13 +201,13 @@ const SmartGrid = <T,>({
             <>
               <button
                 onClick={() => handleSave(index, tempRow)}
-                className="px-3 py-1 rounded text-white bg-green-600"
+                className=" mx-1 px-3 py-1 rounded text-white bg-green-600"
               >
                 Save
               </button>
               <button
                 onClick={() => setEditingRow(null)}
-                className="px-2 py-1 bg-red-500 text-white rounded"
+                className=" mx-1 px-2 py-1 bg-red-500 text-white rounded"
               >
                 Cancel
               </button>
