@@ -17,7 +17,7 @@ const SmartGrid = <T,>({
   onRowEdit,
   height = 600,
   width = "100%",
-  onDataChange
+  onDataChange,
 }: SmartGridProps<T>) => {
   const [localData, setLocalData] = useState(data);
   const [sortCol, setSortCol] = useState<string | null>(null);
@@ -38,6 +38,14 @@ const SmartGrid = <T,>({
       setIsLoading(false);
     }, 600); // Simulate loading
   }, [data]);
+
+  const handlePageChange = (newPage: number) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setPage(newPage);
+      setIsLoading(false);
+    }, 400); // Simulate page change delay
+  };
 
   const handleFilterChange = (columnId: string, value: string) => {
     setFilters((prevFilters) => ({ ...prevFilters, [columnId]: value }));
@@ -100,9 +108,8 @@ const SmartGrid = <T,>({
     setEditingRow(null);
 
     onRowEdit?.(updatedRow, rowIndex);
-    onDataChange?.(updatedData); 
+    onDataChange?.(updatedData);
   };
-
 
   const Row = ({
     index,
@@ -193,17 +200,13 @@ const SmartGrid = <T,>({
           {isEditing ? (
             <>
               <button
-                onClick={() =>
-                   handleSave(index, tempRow) 
-                }
+                onClick={() => handleSave(index, tempRow)}
                 className="px-3 py-1 rounded text-white bg-green-600"
               >
                 Save
               </button>
               <button
-                onClick={() => {
-                  setEditingRow(null);
-                }}
+                onClick={() => setEditingRow(null)}
                 className="px-2 py-1 bg-red-500 text-white rounded"
               >
                 Cancel
@@ -211,10 +214,8 @@ const SmartGrid = <T,>({
             </>
           ) : (
             <button
-              onClick={() =>
-                setEditingRow(index)
-              }
-              className="px-3 py-1 rounded text-white bg-blue-600" 
+              onClick={() => setEditingRow(index)}
+              className="px-3 py-1 rounded text-white bg-blue-600"
             >
               Edit
             </button>
@@ -304,7 +305,7 @@ const SmartGrid = <T,>({
 
           <List
             height={calculateListHeight()}
-            itemCount={paginatedData.length || clientPageSize}
+            itemCount={isLoading ? clientPageSize : paginatedData.length}
             itemSize={52}
             width="100%"
           >
@@ -316,7 +317,7 @@ const SmartGrid = <T,>({
       {paginationEnabled && (
         <Pagination
           page={page}
-          setPage={setPage}
+          onPageChange={handlePageChange}
           totalPages={totalPages}
           clientPageSize={clientPageSize}
           setClientPageSize={setClientPageSize}

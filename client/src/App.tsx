@@ -2,7 +2,7 @@ import  { useState } from "react";
 import SmartGrid from "./smartGrid.tsx";
 import { generateUsers } from "./utils/generateSampleData";
 
-const initialData = generateUsers(1000);
+const initialData = generateUsers(10000);
 const columns = [
   { id: "id", label: "ID", sortable: true },
   { id: "name", label: "Name", sortable: true },

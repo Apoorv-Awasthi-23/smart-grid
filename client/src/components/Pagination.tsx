@@ -1,11 +1,10 @@
-import React from "react";
 
 interface PaginationProps {
   page: number;
   totalPages: number;
   mode: "light" | "dark";
   clientPageSize: number;
-  setPage: (page: number) => void;
+  onPageChange: (page: number) => void;
   setClientPageSize: (size: number) => void;
 }
 
@@ -14,14 +13,14 @@ const Pagination: React.FC<PaginationProps> = ({
   totalPages,
   mode,
   clientPageSize,
-  setPage,
+  onPageChange,
   setClientPageSize,
 }) => {
   return (
     <div className="flex justify-end items-center gap-4 mt-4 text-black">
       <button
         disabled={page === 1}
-        onClick={() => setPage(page - 1)}
+        onClick={() => onPageChange(page - 1)}
         className="px-4 py-2 rounded bg-gray-300 disabled:opacity-50"
       >
         Prev
@@ -33,7 +32,7 @@ const Pagination: React.FC<PaginationProps> = ({
       </span>
       <button
         disabled={page === totalPages}
-        onClick={() => setPage(page + 1)}
+        onClick={() => onPageChange(page + 1)}
         className="px-4 py-2 rounded bg-gray-300 disabled:opacity-50"
       >
         Next
