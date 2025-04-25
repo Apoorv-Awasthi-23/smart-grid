@@ -327,5 +327,4 @@ const SmartGrid = <T,>({
     </div>
   );
 };
-
 export default SmartGrid;
