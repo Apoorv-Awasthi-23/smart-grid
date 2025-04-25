@@ -1,16 +1,32 @@
-export type Column<T = any> = {
-  id: string;
+export interface Column<T> {
+  id: keyof T & string;
   label: string;
   sortable?: boolean;
-  cellRenderer?: (value: T, row: T) => React.ReactNode;
-};
+  cellRenderer?: (value: any, row: T) => React.ReactNode;
+  groupBy?: boolean;
+}
 
-export type SmartGridProps<T = any> = {
-  columns: Column<T>[];
+export interface GroupedData<T> {
+  key: string;
+  items: T[];
+  isExpanded?: boolean;
+}
+
+export interface SmartGridProps<T> {
   data: T[];
-  pageSize?: number;
+  columns: Column<T>[];
   theme?: "light" | "dark";
-  onRowEdit?: (row: T, rowIndex: number) => void;
-  height?: number;
-  width?: number|string;
-};
+  pageSize?: number;
+  onRowEdit?: (row: T, index: number) => void;
+  height?: string | number;
+  width?: string | number;
+  expandableRows?: boolean;
+  renderExpandedContent?: (row: T) => React.ReactNode;
+}
+
+export interface FilterState {
+  [key: string]: string;
+}
+
+export type SortDirection = "asc" | "des";
+export type ThemeMode = "light" | "dark";
