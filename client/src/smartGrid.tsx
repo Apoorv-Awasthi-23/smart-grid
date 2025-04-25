@@ -3,8 +3,8 @@ import { FixedSizeList as List } from "react-window";
 import { Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 
-import GridHeader from "./components/GridHeader";
-import Pagination from "./components/Pagination";
+import GridHeader from "./components/gridHeader";
+import Pagination from "./components/pagination";
 import { SmartGridProps } from "./types/types";
 import { convertToCSV } from "./utils/convertCSV";
 import { downloadFile } from "./utils/download";

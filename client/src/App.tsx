@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import SmartGrid from "./smartGrid.tsx";
 import { generateUsers } from "./utils/generateSampleData";
 
