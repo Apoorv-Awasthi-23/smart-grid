@@ -1,29 +1,29 @@
+import React from "react";
 import { Filter } from "lucide-react";
-import { Column } from "../types/types";
 
-interface GridHeaderProps<T> {
-  columns: Column<T>[];
-  mode: "light" | "dark";
+interface GridHeaderProps {
+  columns: any[];
   sortCol: string | null;
   sortDir: "asc" | "des";
+  mode: "light" | "dark";
   activeFilter: string | null;
   filters: { [key: string]: string };
-  onSort: (columnId: string) => void;
-  onFilterToggle: (columnId: string) => void;
-  onFilterChange: (columnId: string, value: string) => void;
+  handleSort: (colId: string) => void;
+  toggleFilter: (colId: string) => void;
+  handleFilterChange: (colId: string, value: string) => void;
 }
 
-const GridHeader = <T,>({
+const GridHeader: React.FC<GridHeaderProps> = ({
   columns,
-  mode,
   sortCol,
   sortDir,
+  mode,
   activeFilter,
   filters,
-  onSort,
-  onFilterToggle,
-  onFilterChange,
-}: GridHeaderProps<T>) => {
+  handleSort,
+  toggleFilter,
+  handleFilterChange,
+}) => {
   return (
     <div className="flex">
       {columns.map((column) => (
@@ -36,33 +36,31 @@ const GridHeader = <T,>({
           }`}
           style={{ minWidth: `${100 / (columns.length + 1)}%` }}
         >
-          <div className="flex flex-col w-full">
-            <div className="flex items-center justify-between gap-2">
-              <div
-                className="flex-1 cursor-pointer"
-                onClick={() => column.sortable && onSort(column.id)}
-              >
-                {column.label}{" "}
-                {sortCol === column.id && (sortDir === "asc" ? "↑" : "↓")}
-              </div>
-              <button
-                onClick={() => onFilterToggle(column.id)}
-                className={`p-1 rounded hover:bg-gray-100 ${
-                  activeFilter === column.id ? "bg-gray-200" : ""
-                }`}
-              >
-                <Filter size={16} />
-              </button>
+          <div className="flex items-center w-full">
+            <button
+              onClick={() => toggleFilter(column.id)}
+              className={`p-1 rounded hover:bg-gray-100 ${
+                activeFilter === column.id ? "bg-gray-200" : ""
+              }`}
+            >
+              <Filter size={16} />
+            </button>
+            <div
+              className="flex-1 p-1 cursor-pointer"
+              onClick={() => column.sortable && handleSort(column.id)}
+            >
+              {column.label}{" "}
+              {sortCol === column.id && (sortDir === "asc" ? "↑" : "↓")}
             </div>
             {activeFilter === column.id && (
               <input
                 type="text"
                 value={filters[column.id] || ""}
-                onChange={(e) => onFilterChange(column.id, e.target.value)}
+                onChange={(e) => handleFilterChange(column.id, e.target.value)}
                 className={`mt-2 p-1 rounded-md w-full ${
                   mode === "light"
                     ? "bg-white text-black"
-                    : "bg-gray-800 text-white"
+                    : "bg-gray-800 border border-gray-600 text-white"
                 }`}
                 placeholder={`Filter ${column.label}`}
               />

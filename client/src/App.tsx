@@ -1,9 +1,8 @@
-import SmartGrid from "./smartGrid.tsx"
+import React, { useState } from "react";
+import SmartGrid from "./smartGrid.tsx";
 import { generateUsers } from "./utils/generateSampleData";
 
-
-const data = generateUsers(1000);
-
+const initialData = generateUsers(1000);
 const columns = [
   { id: "id", label: "ID", sortable: true },
   { id: "name", label: "Name", sortable: true },
@@ -12,26 +11,31 @@ const columns = [
   { id: "status", label: "Status", sortable: true },
 ];
 
-const pageSize = 2;
+const pageSize = 200;
 const theme = "dark";
+
 const App = () => {
+  const [data, setData] = useState(initialData);
 
   const handleEdit = (row: any, rowIndex: number) => {
     console.log("Editing row:", row, "at index:", rowIndex);
   };
-  return (
-    <>
-      <SmartGrid
-        data={data}
-        columns={columns}
-        pageSize={pageSize}
-        theme={theme}
-        onRowEdit={handleEdit}
-        height={0}
-        width="100%"      
-      />
-      </>
-  )
-}
 
-export default App
+  const handleDataChange = (updatedData: typeof data) => {
+    setData(updatedData); // Persist updated dataset
+    console.log("Updated dataset:", updatedData);
+  };
+
+  return (
+    <SmartGrid
+      data={data}
+      columns={columns}
+      pageSize={pageSize}
+      theme={theme}
+      onRowEdit={handleEdit}
+      onDataChange={handleDataChange}
+    />
+  );
+};
+
+export default App;

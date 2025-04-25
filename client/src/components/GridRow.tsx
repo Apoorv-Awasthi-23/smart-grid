@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Column } from "../types/types";
 
 interface GridRowProps<T = any> {
@@ -32,8 +32,8 @@ const GridRow = <T,>({
   );
 
   // Initialize local edit data when editing starts
-  
-    
+  useEffect(() => {
+    if (editingRow === index) {
       // Initialize with current editRowData or row data
       const initialData: { [key: string]: any } = {};
       columns.forEach((column) => {
@@ -43,7 +43,8 @@ const GridRow = <T,>({
             : row[column.id as keyof T];
       });
       setLocalEditData(initialData);
-   
+    }
+  }, [editingRow, index, row, columns, editRowData]);
 
   const handleLocalInputChange = (columnId: string, value: string) => {
     setLocalEditData((prev) => ({

@@ -1,26 +1,27 @@
+import React from "react";
 
 interface PaginationProps {
   page: number;
   totalPages: number;
-  clientPageSize: number;
   mode: "light" | "dark";
-  onPageChange: (newPage: number) => void;
-  onPageSizeChange: (newSize: number) => void;
+  clientPageSize: number;
+  setPage: (page: number) => void;
+  setClientPageSize: (size: number) => void;
 }
 
-const Pagination = ({
+const Pagination: React.FC<PaginationProps> = ({
   page,
   totalPages,
-  clientPageSize,
   mode,
-  onPageChange,
-  onPageSizeChange,
-}: PaginationProps) => {
+  clientPageSize,
+  setPage,
+  setClientPageSize,
+}) => {
   return (
     <div className="flex justify-end items-center gap-4 mt-4 text-black">
       <button
         disabled={page === 1}
-        onClick={() => onPageChange(page - 1)}
+        onClick={() => setPage(page - 1)}
         className="px-4 py-2 rounded bg-gray-300 disabled:opacity-50"
       >
         Prev
@@ -32,7 +33,7 @@ const Pagination = ({
       </span>
       <button
         disabled={page === totalPages}
-        onClick={() => onPageChange(page + 1)}
+        onClick={() => setPage(page + 1)}
         className="px-4 py-2 rounded bg-gray-300 disabled:opacity-50"
       >
         Next
@@ -42,7 +43,7 @@ const Pagination = ({
         min={1}
         value={clientPageSize}
         onChange={(e) =>
-          onPageSizeChange(Math.max(1, parseInt(e.target.value) || 1))
+          setClientPageSize(Math.max(1, parseInt(e.target.value) || 1))
         }
         className="w-20 px-2 py-1 border rounded text-black"
       />
