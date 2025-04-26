@@ -1,6 +1,14 @@
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { PaginationProps } from "../types";
+export interface PaginationProps {
+  page: number;
+  totalPages: number;
+  mode: "light" | "dark";
+  clientPageSize: number;
+  onPageChange: (page: number) => void;
+  setClientPageSize: (size: number) => void;
+}
+
 
 const Pagination: React.FC<PaginationProps> = ({
   page,

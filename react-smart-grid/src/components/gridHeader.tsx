@@ -1,6 +1,17 @@
 import React from "react";
 import { Filter } from "lucide-react";
-import { GridHeaderProps } from "../types";
+
+export interface GridHeaderProps {
+  columns: any[];
+  sortCol: string | null;
+  sortDir: "asc" | "des";
+  mode: "light" | "dark";
+  activeFilter: string | null;
+  filters: { [key: string]: string };
+  handleSort: (colId: string) => void;
+  toggleFilter: (colId: string) => void;
+  handleFilterChange: (colId: string, value: string) => void;
+}
 
 const GridHeader: React.FC<GridHeaderProps> = ({
   columns,

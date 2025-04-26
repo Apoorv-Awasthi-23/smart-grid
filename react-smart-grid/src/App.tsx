@@ -1,6 +1,6 @@
-//@ts-nocheck
+
 import { useState } from "react";
-import SmartGrid from "./smartGrid.tsx";
+import SmartGrid from "./smartGrid";
 import { generateUsers } from "./utils/generateSampleData";
 
 const initialData = generateUsers(10000);

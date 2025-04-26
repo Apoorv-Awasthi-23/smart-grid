@@ -1,24 +1,11 @@
 {
   "name": "react-smart-grid",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "description": "A flexible, reusable SmartGrid React component for interactive data tables.",
   "author": "Apoorv Awasthi",
   "license": "MIT",
   "type": "module",
-  "main": "dist/react-smartgrid.umd.cjs",
-  "module": "dist/react-smartgrid.es.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "import": "./dist/react-smartgrid.es.js",
-      "require": "./dist/react-smartgrid.umd.cjs",
-      "types": "./dist/index.d.ts"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Apoorv-Awasthi-23/smart-grid.git"
@@ -39,15 +26,13 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview"
   },
-  "peerDependencies": {
-    "react": "^18.0.0 || ^19.0.0",
-    "react-dom": "^18.0.0 || ^19.0.0"
-  },
   "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "framer-motion": "^12.9.1",
     "lucide": "^0.503.0",
     "lucide-react": "^0.503.0",
@@ -56,8 +41,8 @@
   "devDependencies": {
     "@eslint/js": "^9.22.0",
     "@types/node": "^22.15.2",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "^18.2.61",
+    "@types/react-dom": "^18.2.19",
     "@types/react-window": "^1.8.8",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.21",
