@@ -15,7 +15,7 @@ import  SmartGrid  from "../../react-smart-grid/src/smartGrid";
   }));
 };
 
-const initialData = generateUsers(10);
+const initialData = generateUsers(10000);
 const columns = [
   { id: "id", label: "ID", sortable: true },
   { id: "name", label: "Name", sortable: true },

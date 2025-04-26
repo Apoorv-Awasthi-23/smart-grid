@@ -23,7 +23,7 @@ const App = () => {
   };
 
   const handleDataChange = (updatedData: typeof data) => {
-    setData(updatedData); // Persist updated dataset
+    setData(updatedData); 
     console.log("Updated dataset:", updatedData);
   };
 

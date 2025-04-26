@@ -1,4 +1,3 @@
-// utils/generateSampleData.ts
 export const generateUsers = (count = 1000) => {
   const roles = ["Admin", "User", "Manager", "Viewer"];
   const status = ["Active", "Inactive", "Pending"];

@@ -1,10 +1,5 @@
 
-export type Column<T = any> = {
-  id: string;
-  label: string;
-  sortable?: boolean;
-  cellRenderer?: (value: T, row: T) => React.ReactNode;
-};
+import { Column } from "../types/index";
 export const convertToCSV = <T>(data: T[], columns: Column<T>[]): string => {
   const headers = columns.map((col) => col.label).join(",");
   const rows = data.map((row) =>
