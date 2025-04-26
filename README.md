@@ -49,27 +49,7 @@ const App = () => {
 export default App;
 
 
-## 🧩 Props
 
-### | Prop           | Type       | Default     | Description                                        |
-|----------------|------------|-------------|----------------------------------------------------|
-| `data`         | `Array`    | `[]`        | The dataset to display in the grid.                |
-| `columns`      | `Array`    | `[]`        | Configuration for each column (see below).         |
-| `onDataChange` | `Function` | `undefined` | Callback invoked when data is updated.             |
-| `pagination`   | `Boolean`  | `false`     | Enables or disables pagination.                    |
-| `theme`        | `String`   | `'light'`   | Sets the theme; options: `'light'` or `'dark'`.    |
-
-
-## 🧱 Column Configuration
-
-### | Property     | Type       | Description                                                  |
-|--------------|------------|--------------------------------------------------------------|
-| `id`         | `String`   | Unique identifier for the column (used to access row data).  |
-| `label`      | `String`   | Display name for the column header.                          |
-| `sortable`   | `Boolean`  | Enables sorting for the column.                              |
-| `filterable` | `Boolean`  | Enables filtering for the column.                            |
-| `editable`   | `Boolean`  | Allows inline editing for cells in this column.              |
-| `render`     | `Function` | Custom render function for the cell. Receives the row data.  |
 
 
 
