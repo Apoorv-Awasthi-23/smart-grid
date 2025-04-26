@@ -19,64 +19,44 @@
 
 ---
 
-## 📦 Installation
-
-npm install @your-scope/smart-grid
-# or
-yarn add @your-scope/smart-grid
-
-
-
 ## 🧠 Basic Usage
 
-import { useState } from "react";
-import { SmartGrid } from "@your-scope/smart-grid";
-import { generateUsers } from "./utils/generateSampleData";
+import React, { useState } from 'react';
+import { SmartGrid } from '@your-scope/smart-grid';
+import { generateUsers } from './utils/generateSampleData';
 
 const App = () => {
   const [data, setData] = useState(generateUsers(1000));
 
-  const columns =
-  [
-    { id: "id", label: "ID", sortable: true },
-    { id: "name", label: "Name", sortable: true },
-    { id: "email", label: "Email", sortable: true },
-    { id: "role", label: "Role", sortable: true },
-    { id: "status", label: "Status", sortable: true },
+  const columns = [
+    { id: 'id', label: 'ID', sortable: true },
+    { id: 'name', label: 'Name', sortable: true },
+    { id: 'email', label: 'Email', sortable: true },
+    { id: 'role', label: 'Role', sortable: true },
   ];
-
-  const handleEdit = (updatedRow, index) => {
-    console.log("Edited:", updatedRow, "at index", index);
-  };
-
-  const handleDataChange = (updatedData) => {
-    setData(updatedData); // Optionally update local state
-  };
 
   return (
     <SmartGrid
       data={data}
       columns={columns}
-      pageSize={50}
-      theme="dark"
-      onRowEdit={handleEdit}
-      onDataChange={handleDataChange}
+      onDataChange={setData}
+      pagination
+      theme="light"
     />
   );
 };
 
+export default App;
 
-## 🛠️ Customization
 
-## 📑 Columns Definition
-{
-  id: "email",
-  label: "Email",
-  sortable: true,
-  cellRenderer: (value, row) => (
-    <a href={`mailto:${value}`} className="text-blue-600 underline">{value}</a>
-  )
-}
+## 🧩 Props
+
+####Prop |                   ####Type |                 ####Default |                          ####Description
+data |                       Array                      | []                                   | The dataset to display in the grid.
+columns |                    Array                      | []                                   | Configuration for each column (see below).
+onDataChange |               Function                   | null                                 | Callback invoked when data is updated.
+pagination |                 Boolean                    | false                                | Enables or disables pagination.
+theme |                      String                     | 'light'                              | Sets the theme; options: 'light' or 'dark'.
 
 
 
