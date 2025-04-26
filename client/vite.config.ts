@@ -1,7 +1,6 @@
-// vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
@@ -9,7 +8,8 @@ export default defineConfig({
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "SmartGrid",
-      fileName: (format) => `smart-grid.${format}.js`,
+      fileName: (format) => `react-smartgrid.${format}.js`,
+      formats: ["es", "umd"],
     },
     rollupOptions: {
       external: ["react", "react-dom"],
