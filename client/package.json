@@ -1,5 +1,5 @@
 {
-  "name": "@apoorv/react-smartgrid",
+  "name": "react-smart-grid",
   "version": "0.1.0",
   "private": false,
   "description": "A flexible, reusable SmartGrid React component for interactive data tables.",

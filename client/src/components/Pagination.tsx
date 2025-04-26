@@ -1,10 +1,6 @@
-import {
-  ArrowLeft,
-  ArrowRight,
-  
-} from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { PaginationProps } from "../types/types"; 
+import { PaginationProps } from "../types";
 
 const Pagination: React.FC<PaginationProps> = ({
   page,

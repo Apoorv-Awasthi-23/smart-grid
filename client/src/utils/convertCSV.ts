@@ -1,16 +1,12 @@
-//@ts-nocheck
 
-
-
-
-import { Column } from "../types/types";
-
+import { Column } from "../types";
 
 export const convertToCSV = <T>(data: T[], columns: Column<T>[]): string => {
   const headers = columns.map((col) => col.label).join(",");
   const rows = data.map((row) =>
     columns
       .map((col) => {
+        //@ts-ignore
         const value = row[col.id];
         return typeof value === "string" && value.includes(",")
           ? `"${value}"`

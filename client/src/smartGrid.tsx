@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React, { useEffect, useMemo, useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import { Sun, Moon } from "lucide-react";
@@ -6,7 +5,7 @@ import { motion } from "framer-motion";
 
 import GridHeader from "./components/gridHeader";
 import Pagination from "./components/pagination";
-import { SmartGridProps } from "./types/types";
+import { SmartGridProps } from "./types";
 import { convertToCSV } from "./utils/convertCSV";
 import { downloadFile } from "./utils/download";
 
@@ -60,7 +59,7 @@ const SmartGrid = <T,>({
     return localData.filter((row) =>
       columns.every((column) => {
         const filterValue = filters[column.id]?.toLowerCase() || "";
-        const cellValue = String(row[column.id] ?? "").toLowerCase();
+        const cellValue = String((row as Record<string, any>)[column.id] ?? "").toLowerCase();
         return cellValue.includes(filterValue);
       })
     );
@@ -170,6 +169,7 @@ const SmartGrid = <T,>({
             {isEditing ? (
               <input
                 type="text"
+                //@ts-ignore
                 value={tempRow[column.id]}
                 onChange={(e) =>
                   setTempRow((prev) => ({
@@ -184,8 +184,10 @@ const SmartGrid = <T,>({
                 }`}
               />
             ) : column.cellRenderer ? (
+              //@ts-ignore
               column.cellRenderer(row[column.id], row)
-            ) : (
+              ) : (
+              //@ts-ignore
               row[column.id]
             )}
           </div>
