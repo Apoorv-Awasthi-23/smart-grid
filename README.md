@@ -49,7 +49,7 @@ const App = () => {
 export default App;
 
 
-## 🧩 Props
+# 🧩 Props
 
 ### | Prop           | Type       | Default     | Description                                        |
 |----------------|------------|-------------|----------------------------------------------------|
@@ -60,7 +60,7 @@ export default App;
 | `theme`        | `String`   | `'light'`   | Sets the theme; options: `'light'` or `'dark'`.    |
 
 
-## 🧱 Column Configuration
+# 🧱 Column Configuration
 
 ### | Property     | Type       | Description                                                  |
 |--------------|------------|--------------------------------------------------------------|
