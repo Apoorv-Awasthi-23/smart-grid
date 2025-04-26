@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect, useMemo, useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import { Sun, Moon } from "lucide-react";

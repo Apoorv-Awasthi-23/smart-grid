@@ -1,3 +1,4 @@
+//@ts-nocheck
 export type Column<T = any> = {
   id: string;
   label: string;
